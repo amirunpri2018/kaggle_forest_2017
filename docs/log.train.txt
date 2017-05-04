@@ -1,0 +1,561 @@
+
+--- [START 2017-05-04 21:38:31] ----------------------------------------------------------------
+
+** some experiment setting **
+	SEED    = 123
+	file    = /root/share/project/pytorch/build/forest-0/train-forest-0.py
+	out_dir = /root/share/project/pytorch/results/kaggle-forest/new-xx05
+
+** dataset setting **
+	(height,width)    = (32, 32)
+	in_channels       = 3
+	EXT               = jpg
+	train_dataset.num = 37479
+	test_dataset.num  = 3000
+	batch_size = 96
+
+** net setting **
+
+SimpleNet2 (
+  (layer0): Sequential (
+    (0): Conv2d(3, 8, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (1): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True)
+    (2): PReLU (8)
+    (3): Conv2d(8, 8, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (4): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True)
+    (5): PReLU (8)
+    (6): Conv2d(8, 8, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (7): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True)
+    (8): PReLU (8)
+  )
+  (layer1): Sequential (
+    (0): Conv2d(8, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True)
+    (2): PReLU (32)
+    (3): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True)
+    (5): PReLU (32)
+    (6): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (7): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True)
+    (8): PReLU (32)
+    (9): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (10): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True)
+    (11): PReLU (32)
+    (12): MaxPool2d (size=(2, 2), stride=(2, 2), dilation=(1, 1))
+  )
+  (layer2): Sequential (
+    (0): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True)
+    (2): PReLU (64)
+    (3): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True)
+    (5): PReLU (64)
+    (6): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True)
+    (8): PReLU (64)
+    (9): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (10): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True)
+    (11): PReLU (64)
+    (12): MaxPool2d (size=(2, 2), stride=(2, 2), dilation=(1, 1))
+    (13): Dropout (p = 0.25)
+  )
+  (layer3): Sequential (
+    (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+    (2): PReLU (128)
+    (3): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+    (5): PReLU (128)
+    (6): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (7): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+    (8): PReLU (128)
+    (9): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (10): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+    (11): PReLU (128)
+    (12): MaxPool2d (size=(2, 2), stride=(2, 2), dilation=(1, 1))
+    (13): Dropout (p = 0.5)
+  )
+  (layer5): Sequential (
+    (0): Linear (192 -> 512)
+    (1): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True)
+    (2): ReLU (inplace)
+    (3): Linear (512 -> 512)
+    (4): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True)
+    (5): ReLU (inplace)
+  )
+  (logit): Linear (512 -> 17)
+)
+
+** start training here! **
+ epoch   iter   rate  |  smooth_loss  train_loss  (acc)  |  valid_loss    (acc)   | min
+---------------------------------------------------------------------------------------
+  1.0     390    0.1000   |  0.158  0.158  0.864 | 0.159  0.846  |  0.1 min 
+  2.0     390    0.1000   |  0.131  0.131  0.889 | 0.132  0.879  |  0.1 min 
+  3.0     390    0.1000   |  0.153  0.153  0.854 | 0.148  0.853  |  0.1 min 
+  4.0     390    0.1000   |  0.112  0.112  0.889 | 0.185  0.827  |  0.1 min 
+  5.0     390    0.1000   |  0.124  0.124  0.898 | 0.128  0.888  |  0.1 min 
+  6.0     390    0.1000   |  0.140  0.140  0.877 | 0.181  0.826  |  0.1 min 
+  7.0     390    0.1000   |  0.130  0.130  0.885 | 0.128  0.885  |  0.1 min 
+  8.0     390    0.1000   |  0.118  0.118  0.897 | 0.134  0.883  |  0.1 min 
+  9.0     390    0.1000   |  0.106  0.106  0.901 | 0.130  0.881  |  0.1 min 
+ 10.0     390    0.1000   |  0.133  0.133  0.890 | 0.129  0.876  |  0.1 min 
+ 11.0     390    0.1000   |  0.109  0.109  0.891 | 0.117  0.898  |  0.1 min 
+ 12.0     390    0.0500   |  0.099  0.099  0.910 | 0.116  0.900  |  0.1 min 
+ 13.0     390    0.0500   |  0.103  0.103  0.917 | 0.114  0.901  |  0.1 min 
+ 14.0     390    0.0500   |  0.118  0.118  0.891 | 0.121  0.884  |  0.1 min 
+ 15.0     390    0.0500   |  0.101  0.101  0.919 | 0.111  0.905  |  0.1 min 
+ 16.0     390    0.0500   |  0.116  0.116  0.911 | 0.128  0.883  |  0.1 min 
+ 17.0     390    0.0500   |  0.111  0.111  0.899 | 0.116  0.901  |  0.1 min 
+ 18.0     390    0.0500   |  0.112  0.112  0.899 | 0.123  0.888  |  0.1 min 
+ 19.0     390    0.0500   |  0.136  0.136  0.890 | 0.139  0.875  |  0.1 min 
+ 20.0     390    0.0500   |  0.118  0.118  0.890 | 0.116  0.899  |  0.1 min 
+ 21.0     390    0.0500   |  0.115  0.115  0.900 | 0.127  0.887  |  0.1 min 
+ 22.0     390    0.0100   |  0.113  0.113  0.874 | 0.103  0.911  |  0.1 min 
+ 23.0     390    0.0100   |  0.098  0.098  0.922 | 0.102  0.911  |  0.1 min 
+ 24.0     390    0.0100   |  0.124  0.124  0.888 | 0.102  0.912  |  0.1 min 
+ 25.0     390    0.0100   |  0.112  0.112  0.899 | 0.100  0.915  |  0.1 min 
+ 26.0     390    0.0100   |  0.092  0.092  0.932 | 0.101  0.912  |  0.1 min 
+ 27.0     390    0.0100   |  0.089  0.089  0.929 | 0.105  0.909  |  0.1 min 
+ 28.0     390    0.0100   |  0.119  0.119  0.891 | 0.103  0.910  |  0.1 min 
+ 29.0     390    0.0050   |  0.120  0.120  0.896 | 0.100  0.914  |  0.1 min 
+ 30.0     390    0.0050   |  0.076  0.076  0.944 | 0.101  0.912  |  0.1 min 
+ 31.0     390    0.0050   |  0.118  0.118  0.893 | 0.099  0.913  |  0.1 min 
+ 32.0     390    0.0050   |  0.089  0.089  0.932 | 0.104  0.909  |  0.1 min 
+ 33.0     390    0.0010   |  0.101  0.101  0.908 | 0.098  0.915  |  0.1 min 
+ 34.0     390    0.0010   |  0.095  0.095  0.929 | 0.097  0.916  |  0.1 min 
+ 35.0     390    0.0010   |  0.076  0.076  0.939 | 0.098  0.915  |  0.1 min 
+ 36.0     390    0.0010   |  0.095  0.095  0.923 | 0.097  0.915  |  0.1 min 
+ 37.0     390    0.0010   |  0.103  0.103  0.911 | 0.097  0.916  |  0.1 min 
+
+/root/share/project/pytorch/results/kaggle-forest/new-xx05/snap/final.torch:
+	test_loss=0.097330, test_acc=0.915949, test_num=3000
+
+--- [START 2017-05-04 21:48:59] ----------------------------------------------------------------
+
+** some experiment setting **
+	SEED    = 123
+	file    = /root/share/project/pytorch/build/forest-0/train-forest-0.py
+	out_dir = /root/share/project/pytorch/results/kaggle-forest/new-xx05
+
+** dataset setting **
+	(height,width)    = (32, 32)
+	in_channels       = 3
+	EXT               = jpg
+	train_dataset.num = 37479
+	test_dataset.num  = 3000
+	batch_size = 96
+
+** net setting **
+
+SimpleNet2 (
+  (layer0): Sequential (
+    (0): Conv2d(3, 8, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (1): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True)
+    (2): PReLU (8)
+    (3): Conv2d(8, 8, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (4): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True)
+    (5): PReLU (8)
+    (6): Conv2d(8, 8, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (7): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True)
+    (8): PReLU (8)
+  )
+  (layer1): Sequential (
+    (0): Conv2d(8, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True)
+    (2): PReLU (32)
+    (3): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True)
+    (5): PReLU (32)
+    (6): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (7): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True)
+    (8): PReLU (32)
+    (9): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (10): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True)
+    (11): PReLU (32)
+    (12): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (13): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True)
+    (14): PReLU (32)
+    (15): MaxPool2d (size=(2, 2), stride=(2, 2), dilation=(1, 1))
+  )
+  (layer2): Sequential (
+    (0): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True)
+    (2): PReLU (64)
+    (3): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True)
+    (5): PReLU (64)
+    (6): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True)
+    (8): PReLU (64)
+    (9): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (10): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True)
+    (11): PReLU (64)
+    (12): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (13): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True)
+    (14): PReLU (64)
+    (15): MaxPool2d (size=(2, 2), stride=(2, 2), dilation=(1, 1))
+    (16): Dropout (p = 0.25)
+  )
+  (layer3): Sequential (
+    (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+    (2): PReLU (128)
+    (3): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+    (5): PReLU (128)
+    (6): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (7): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+    (8): PReLU (128)
+    (9): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (10): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+    (11): PReLU (128)
+    (12): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (13): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+    (14): PReLU (128)
+    (15): MaxPool2d (size=(2, 2), stride=(2, 2), dilation=(1, 1))
+    (16): Dropout (p = 0.5)
+  )
+  (layer5): Sequential (
+    (0): Linear (192 -> 512)
+    (1): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True)
+    (2): ReLU (inplace)
+    (3): Linear (512 -> 512)
+    (4): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True)
+    (5): ReLU (inplace)
+  )
+  (logit): Linear (512 -> 17)
+)
+
+** start training here! **
+ epoch   iter   rate  |  smooth_loss  train_loss  (acc)  |  valid_loss    (acc)   | min
+---------------------------------------------------------------------------------------
+  1.0     390    0.1000   |  0.143  0.143  0.875 | 0.162  0.845  |  0.1 min 
+  2.0     390    0.1000   |  0.160  0.160  0.860 | 0.133  0.883  |  0.1 min 
+  3.0     390    0.1000   |  0.107  0.107  0.903 | 0.131  0.881  |  0.1 min 
+  4.0     390    0.1000   |  0.136  0.136  0.896 | 0.128  0.879  |  0.1 min 
+  5.0     390    0.1000   |  0.129  0.129  0.881 | 0.137  0.873  |  0.1 min 
+  6.0     390    0.1000   |  0.133  0.133  0.880 | 0.139  0.870  |  0.1 min 
+  7.0     390    0.1000   |  0.113  0.113  0.908 | 0.141  0.870  |  0.1 min 
+  8.0     390    0.1000   |  0.154  0.154  0.870 | 0.129  0.884  |  0.1 min 
+  9.0     390    0.1000   |  0.140  0.140  0.877 | 0.132  0.884  |  0.1 min 
+ 10.0     390    0.1000   |  0.122  0.122  0.891 | 0.135  0.876  |  0.1 min 
+ 11.0     390    0.1000   |  0.111  0.111  0.898 | 0.125  0.888  |  0.1 min 
+ 12.0     390    0.0500   |  0.137  0.137  0.877 | 0.147  0.854  |  0.1 min 
+ 13.0     390    0.0500   |  0.123  0.123  0.887 | 0.139  0.875  |  0.1 min 
+ 14.0     390    0.0500   |  0.128  0.128  0.881 | 0.134  0.880  |  0.1 min 
+ 15.0     390    0.0500   |  0.116  0.116  0.896 | 0.116  0.899  |  0.1 min 
+ 16.0     390    0.0500   |  0.116  0.116  0.897 | 0.153  0.859  |  0.1 min 
+ 17.0     390    0.0500   |  0.111  0.111  0.910 | 0.120  0.893  |  0.1 min 
+ 18.0     390    0.0500   |  0.111  0.111  0.912 | 0.161  0.856  |  0.1 min 
+ 19.0     390    0.0500   |  0.093  0.093  0.923 | 0.118  0.891  |  0.1 min 
+ 20.0     390    0.0500   |  0.103  0.103  0.906 | 0.113  0.901  |  0.1 min 
+ 21.0     390    0.0500   |  0.094  0.094  0.922 | 0.124  0.884  |  0.1 min 
+ 22.0     390    0.0100   |  0.086  0.086  0.926 | 0.104  0.908  |  0.1 min 
+ 23.0     390    0.0100   |  0.105  0.105  0.903 | 0.105  0.907  |  0.1 min 
+ 24.0     390    0.0100   |  0.109  0.109  0.914 | 0.104  0.908  |  0.1 min 
+ 25.0     390    0.0100   |  0.092  0.092  0.935 | 0.102  0.910  |  0.1 min 
+ 26.0     390    0.0100   |  0.110  0.110  0.910 | 0.102  0.911  |  0.1 min 
+ 27.0     390    0.0100   |  0.107  0.107  0.911 | 0.102  0.912  |  0.1 min 
+ 28.0     390    0.0100   |  0.108  0.108  0.896 | 0.103  0.911  |  0.1 min 
+ 29.0     390    0.0050   |  0.104  0.104  0.914 | 0.101  0.912  |  0.1 min 
+ 30.0     390    0.0050   |  0.106  0.106  0.900 | 0.100  0.912  |  0.1 min 
+ 31.0     390    0.0050   |  0.108  0.108  0.898 | 0.100  0.913  |  0.1 min 
+ 32.0     390    0.0050   |  0.094  0.094  0.923 | 0.100  0.912  |  0.1 min 
+ 33.0     390    0.0010   |  0.101  0.101  0.912 | 0.099  0.914  |  0.1 min 
+ 34.0     390    0.0010   |  0.092  0.092  0.903 | 0.099  0.912  |  0.1 min 
+ 35.0     390    0.0010   |  0.103  0.103  0.910 | 0.099  0.913  |  0.1 min 
+ 36.0     390    0.0010   |  0.106  0.106  0.926 | 0.099  0.914  |  0.1 min 
+ 37.0     390    0.0010   |  0.099  0.099  0.916 | 0.098  0.914  |  0.1 min 
+
+/root/share/project/pytorch/results/kaggle-forest/new-xx05/snap/final.torch:
+	test_loss=0.098394, test_acc=0.914409, test_num=3000
+
+--- [START 2017-05-04 21:55:29] ----------------------------------------------------------------
+
+** some experiment setting **
+	SEED    = 123
+	file    = /root/share/project/pytorch/build/forest-0/train-forest-0.py
+	out_dir = /root/share/project/pytorch/results/kaggle-forest/new-xx05
+
+** dataset setting **
+	(height,width)    = (64, 64)
+	in_channels       = 3
+	EXT               = jpg
+	train_dataset.num = 37479
+	test_dataset.num  = 3000
+	batch_size = 96
+
+** net setting **
+
+SimpleNet2 (
+  (layer0): Sequential (
+    (0): Conv2d(3, 8, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (1): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True)
+    (2): PReLU (8)
+    (3): Conv2d(8, 8, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (4): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True)
+    (5): PReLU (8)
+    (6): Conv2d(8, 8, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (7): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True)
+    (8): PReLU (8)
+  )
+  (layer1): Sequential (
+    (0): Conv2d(8, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True)
+    (2): PReLU (32)
+    (3): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True)
+    (5): PReLU (32)
+    (6): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (7): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True)
+    (8): PReLU (32)
+    (9): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (10): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True)
+    (11): PReLU (32)
+    (12): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (13): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True)
+    (14): PReLU (32)
+    (15): MaxPool2d (size=(2, 2), stride=(2, 2), dilation=(1, 1))
+  )
+  (layer2): Sequential (
+    (0): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True)
+    (2): PReLU (64)
+    (3): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True)
+    (5): PReLU (64)
+    (6): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True)
+    (8): PReLU (64)
+    (9): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (10): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True)
+    (11): PReLU (64)
+    (12): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (13): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True)
+    (14): PReLU (64)
+    (15): MaxPool2d (size=(2, 2), stride=(2, 2), dilation=(1, 1))
+    (16): Dropout (p = 0.25)
+  )
+  (layer3): Sequential (
+    (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+    (2): PReLU (128)
+    (3): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+    (5): PReLU (128)
+    (6): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (7): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+    (8): PReLU (128)
+    (9): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (10): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+    (11): PReLU (128)
+    (12): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (13): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+    (14): PReLU (128)
+    (15): MaxPool2d (size=(2, 2), stride=(2, 2), dilation=(1, 1))
+    (16): Dropout (p = 0.5)
+  )
+  (layer5): Sequential (
+    (0): Linear (192 -> 512)
+    (1): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True)
+    (2): ReLU (inplace)
+    (3): Linear (512 -> 512)
+    (4): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True)
+    (5): ReLU (inplace)
+  )
+  (logit): Linear (512 -> 17)
+)
+
+** start training here! **
+ epoch   iter   rate  |  smooth_loss  train_loss  (acc)  |  valid_loss    (acc)   | min
+---------------------------------------------------------------------------------------
+  1.0     390    0.1000   |  0.155  0.155  0.847 | 0.151  0.854  |  0.4 min 
+  2.0     390    0.1000   |  0.136  0.136  0.862 | 0.147  0.859  |  0.4 min 
+  3.0     390    0.1000   |  0.117  0.117  0.886 | 0.137  0.869  |  0.4 min 
+  4.0     390    0.1000   |  0.127  0.127  0.896 | 0.137  0.873  |  0.4 min 
+  5.0     390    0.1000   |  0.152  0.152  0.861 | 0.123  0.892  |  0.4 min 
+  6.0     390    0.1000   |  0.120  0.120  0.882 | 0.182  0.827  |  0.4 min 
+  7.0     390    0.1000   |  0.098  0.098  0.921 | 0.146  0.863  |  0.4 min 
+  8.0     390    0.1000   |  0.112  0.112  0.915 | 0.143  0.874  |  0.4 min 
+  9.0     390    0.1000   |  0.119  0.119  0.894 | 0.162  0.839  |  0.4 min 
+ 10.0     390    0.1000   |  0.118  0.118  0.901 | 0.142  0.860  |  0.4 min 
+ 11.0     390    0.1000   |  0.110  0.110  0.907 | 0.154  0.851  |  0.4 min 
+ 12.0     390    0.0500   |  0.102  0.102  0.911 | 0.113  0.901  |  0.4 min 
+ 13.0     390    0.0500   |  0.130  0.130  0.880 | 0.145  0.857  |  0.4 min 
+ 14.0     390    0.0500   |  0.099  0.099  0.925 | 0.139  0.879  |  0.4 min 
+ 15.0     390    0.0500   |  0.084  0.084  0.937 | 0.138  0.873  |  0.4 min 
+
+--- [START 2017-05-04 22:03:20] ----------------------------------------------------------------
+
+** some experiment setting **
+	SEED    = 123
+	file    = /root/share/project/pytorch/build/forest-0/train-forest-0.py
+	out_dir = /root/share/project/pytorch/results/kaggle-forest/new-xx05
+
+** dataset setting **
+	(height,width)    = (64, 64)
+	in_channels       = 3
+	EXT               = jpg
+	train_dataset.num = 37479
+	test_dataset.num  = 3000
+	batch_size = 96
+
+** net setting **
+
+--- [START 2017-05-04 22:06:54] ----------------------------------------------------------------
+
+** some experiment setting **
+	SEED    = 123
+	file    = /root/share/project/pytorch/build/forest-0/train-forest-0.py
+	out_dir = /root/share/project/pytorch/results/kaggle-forest/new-xx05
+
+** dataset setting **
+	(height,width)    = (64, 64)
+	in_channels       = 3
+	EXT               = jpg
+	train_dataset.num = 37479
+	test_dataset.num  = 3000
+	batch_size = 96
+
+** net setting **
+
+SimpleNet64_2 (
+  (layer0): Sequential (
+    (0): Conv2d(3, 8, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (1): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True)
+    (2): PReLU (8)
+    (3): Conv2d(8, 8, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (4): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True)
+    (5): PReLU (8)
+    (6): Conv2d(8, 8, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (7): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True)
+    (8): PReLU (8)
+  )
+  (layer1): Sequential (
+    (0): Conv2d(8, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True)
+    (2): PReLU (32)
+    (3): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True)
+    (5): PReLU (32)
+    (6): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (7): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True)
+    (8): PReLU (32)
+    (9): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (10): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True)
+    (11): PReLU (32)
+    (12): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (13): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True)
+    (14): PReLU (32)
+    (15): MaxPool2d (size=(2, 2), stride=(2, 2), dilation=(1, 1))
+  )
+  (layer2): Sequential (
+    (0): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True)
+    (2): PReLU (32)
+    (3): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True)
+    (5): PReLU (32)
+    (6): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (7): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True)
+    (8): PReLU (32)
+    (9): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (10): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True)
+    (11): PReLU (32)
+    (12): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (13): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True)
+    (14): PReLU (32)
+    (15): MaxPool2d (size=(2, 2), stride=(2, 2), dilation=(1, 1))
+  )
+  (layer3): Sequential (
+    (0): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True)
+    (2): PReLU (64)
+    (3): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True)
+    (5): PReLU (64)
+    (6): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True)
+    (8): PReLU (64)
+    (9): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (10): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True)
+    (11): PReLU (64)
+    (12): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (13): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True)
+    (14): PReLU (64)
+    (15): MaxPool2d (size=(2, 2), stride=(2, 2), dilation=(1, 1))
+    (16): Dropout (p = 0.25)
+  )
+  (layer4): Sequential (
+    (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+    (2): PReLU (128)
+    (3): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+    (5): PReLU (128)
+    (6): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (7): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+    (8): PReLU (128)
+    (9): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (10): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+    (11): PReLU (128)
+    (12): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (13): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+    (14): PReLU (128)
+    (15): MaxPool2d (size=(2, 2), stride=(2, 2), dilation=(1, 1))
+    (16): Dropout (p = 0.5)
+  )
+  (layer5): Sequential (
+    (0): Linear (192 -> 512)
+    (1): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True)
+    (2): ReLU (inplace)
+    (3): Linear (512 -> 512)
+    (4): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True)
+    (5): ReLU (inplace)
+  )
+  (logit): Linear (512 -> 17)
+)
+
+** start training here! **
+ epoch   iter   rate  |  smooth_loss  train_loss  (acc)  |  valid_loss    (acc)   | min
+---------------------------------------------------------------------------------------
+  1.0     390    0.1000   |  0.156  0.156  0.843 | 0.160  0.833  |  0.4 min 
+  2.0     390    0.1000   |  0.133  0.133  0.883 | 0.139  0.873  |  0.4 min 
+  3.0     390    0.1000   |  0.145  0.145  0.893 | 0.136  0.872  |  0.4 min 
+  4.0     390    0.1000   |  0.091  0.091  0.925 | 0.127  0.887  |  0.4 min 
+  5.0     390    0.1000   |  0.136  0.136  0.892 | 0.134  0.875  |  0.4 min 
+  6.0     390    0.1000   |  0.129  0.129  0.899 | 0.126  0.886  |  0.4 min 
+  7.0     390    0.1000   |  0.125  0.125  0.878 | 0.138  0.875  |  0.4 min 
+  8.0     390    0.1000   |  0.155  0.155  0.864 | 0.137  0.876  |  0.4 min 
+  9.0     390    0.1000   |  0.116  0.116  0.904 | 0.122  0.893  |  0.4 min 
+ 10.0     390    0.1000   |  0.127  0.127  0.898 | 0.119  0.896  |  0.4 min 
+ 11.0     390    0.1000   |  0.149  0.149  0.853 | 0.127  0.886  |  0.4 min 
+ 12.0     390    0.0500   |  0.133  0.133  0.889 | 0.111  0.905  |  0.4 min 
+ 13.0     390    0.0500   |  0.135  0.135  0.873 | 0.132  0.887  |  0.4 min 
+ 14.0     390    0.0500   |  0.097  0.097  0.916 | 0.108  0.908  |  0.4 min 
+ 15.0     390    0.0500   |  0.095  0.095  0.925 | 0.133  0.882  |  0.4 min 
+ 16.0     390    0.0500   |  0.108  0.108  0.909 | 0.108  0.909  |  0.4 min 
+ 17.0     390    0.0500   |  0.108  0.108  0.910 | 0.130  0.885  |  0.4 min 
+ 18.0     390    0.0500   |  0.094  0.094  0.909 | 0.121  0.897  |  0.4 min 
+ 19.0     390    0.0500   |  0.102  0.102  0.916 | 0.122  0.892  |  0.4 min 
+ 20.0     390    0.0500   |  0.098  0.098  0.901 | 0.114  0.901  |  0.4 min 
+ 21.0     390    0.0500   |  0.102  0.102  0.914 | 0.126  0.886  |  0.4 min 
+ 22.0     390    0.0100   |  0.089  0.089  0.918 | 0.097  0.917  |  0.4 min 
+ 23.0     390    0.0100   |  0.116  0.116  0.902 | 0.096  0.917  |  0.4 min 
+ 24.0     390    0.0100   |  0.128  0.128  0.889 | 0.095  0.919  |  0.4 min 
+ 25.0     390    0.0100   |  0.103  0.103  0.886 | 0.095  0.918  |  0.4 min 
+ 26.0     390    0.0100   |  0.093  0.093  0.916 | 0.094  0.919  |  0.4 min 
+ 27.0     390    0.0100   |  0.089  0.089  0.931 | 0.095  0.920  |  0.4 min 
+ 28.0     390    0.0100   |  0.087  0.087  0.932 | 0.094  0.919  |  0.4 min 
+ 29.0     390    0.0050   |  0.078  0.078  0.938 | 0.094  0.919  |  0.4 min 
+ 30.0     390    0.0050   |  0.097  0.097  0.908 | 0.094  0.920  |  0.4 min 
+ 31.0     390    0.0050   |  0.098  0.098  0.925 | 0.092  0.921  |  0.4 min 
+ 32.0     390    0.0050   |  0.092  0.092  0.915 | 0.092  0.921  |  0.4 min 
+ 33.0     390    0.0010   |  0.111  0.111  0.897 | 0.092  0.922  |  0.4 min 
+ 34.0     390    0.0010   |  0.095  0.095  0.913 | 0.091  0.922  |  0.4 min 
+ 35.0     390    0.0010   |  0.086  0.086  0.940 | 0.092  0.922  |  0.4 min 
+ 36.0     390    0.0010   |  0.093  0.093  0.927 | 0.091  0.922  |  0.4 min 
+ 37.0     390    0.0010   |  0.105  0.105  0.907 | 0.091  0.922  |  0.4 min 
+
+/root/share/project/pytorch/results/kaggle-forest/new-xx05/snap/final.torch:
+	test_loss=0.091220, test_acc=0.921909, test_num=3000
