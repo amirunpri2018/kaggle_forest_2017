@@ -1,0 +1,96 @@
+- speed of gpu for forward for resnet on cifar batch=32
+
+-----
+data
+- load custom
+- load default
+- transform
+
+-----
+network
+- construct
+- visualise as graph
+- print summary
+- print MACs, memory, etc
+- measure time
+
+
+
+https://www.jetbrains.com/help/pycharm/2016.3/conda-support-creating-conda-environment.html
+
+https://discuss.pytorch.org/t/updating-pytorch/309
+conda config --add channels soumith
+conda update pytorch torchvision
+
+
+conda uninstall pytorch
+conda install pytorch torchvision -c soumith
+
+
+Fetching package metadata ...........
+Solving package specifications: .
+Warning: 2 possible package resolutions (only showing differing packages):
+  - soumith::pytorch-0.1.12-py360_1cu80
+  - soumith::pytorch-0.1.12-py36_1cu80
+
+Package plan for installation in environment /opt/anaconda3:
+
+The following NEW packages will be INSTALLED:
+
+    pytorch:     0.1.12-py360_1cu80 soumith [cuda80]
+    torchvision: 0.1.8-py36_2       soumith
+
+
+
+
+
+PySlice_Unpack error
+/opt/anaconda3/lib/python3.6/site-packages/PIL/_imaging.cpython-36m-x86_64-linux-gnu.so: undefined symbol: PySlice_Unpack
+
+https://github.com/pytorch/pytorch/issues/1383
+https://discuss.pytorch.org/t/pyslice-adjustindices-error/1475/22
+
+
+(/opt/anaconda3) root@user:/opt/anaconda3/bin# python --version
+Python 3.6.0 :: Anaconda custom (64-bit)
+
+(/opt/anaconda3) root@user:/opt/anaconda3/bin#  conda list | grep pytorch
+pytorch                   0.1.12              py360_1cu80  [cuda80]  soumith
+(
+
+
+/opt/anaconda3/bin/python3.6 /opt/pycharm-2017.1/helpers/pydev/pydevconsole.py 35732 45555
+PyDev console: starting.
+import sys; print('Python %s on %s' % (sys.version, sys.platform))
+sys.path.extend(['/root/share/project/pytorch/build/tutorial-0'])
+Python 3.6.0 |Anaconda custom (64-bit)| (default, Dec 23 2016, 12:22:00)
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-1)] on linux
+import torch
+torch.__version__
+'0.1.11+27fb875'
+
+(/opt/anaconda3) root@user:/opt/anaconda3/bin# ./conda update pytorch torchvision
+Fetching package metadata ...........
+Solving package specifications: .
+Warning: 2 possible package resolutions (only showing differing packages):
+  - soumith::pytorch-0.1.12-py360_1cu80
+  - soumith::pytorch-0.1.12-py36_1cu80
+
+pytorch: 0.1.11-py360_4cu80 soumith [cuda80] --> 0.1.12-py360_1cu80 soumith [cuda80]
+
+
+/opt/anaconda3/bin/python3.6 /opt/pycharm-2017.1/helpers/pydev/pydevconsole.py 40812 36155
+PyDev console: starting.
+import sys; print('Python %s on %s' % (sys.version, sys.platform))
+sys.path.extend(['/root/share/project/pytorch/build/cifar-0'])
+Python 3.6.0 |Anaconda custom (64-bit)| (default, Dec 23 2016, 12:22:00)
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-1)] on linux
+import torch
+torch.__version__
+'0.1.11+27fb875'
+
+
+#####################################
+## pin
+
+1. take in 2 cvs file and ouput Fscore
